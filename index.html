@@ -1126,8 +1126,8 @@ td.c{text-align:center}
 const STATUSES = ['','SI','NO','LLEGA TARDE >10','LLEGA TARDE <10','FALTA','INCAPACIDAD','PSG','PCG','P. ENTRADA TARDE','VACACIONES','CASTIGO','ENVASANDO','TOSTANDO','CENTRIFUGANDO','CAMBIANDO FILTROS'];
 const SC = {
   'SI':           {bg:'var(--si-bg)',  fg:'var(--si-fg)',  br:'var(--si-br)',  lbl:'SI'},
-  'RET. >10':     {bg:'var(--r2-bg)',  fg:'var(--r2-fg)',  br:'var(--r2-br)',  lbl:'RET. >10'},
-  'RET. <10':     {bg:'var(--r1-bg)',  fg:'var(--r1-fg)',  br:'var(--r1-br)',  lbl:'RET. <10'},
+  'LLEGA TARDE >10':     {bg:'var(--r2-bg)',  fg:'var(--r2-fg)',  br:'var(--r2-br)',  lbl:'LLEGA TARDE >10'},
+  'LLEGA TARDE <10':     {bg:'var(--r1-bg)',  fg:'var(--r1-fg)',  br:'var(--r1-br)',  lbl:'LLEGA TARDE <10'},
   'FALTA':        {bg:'var(--na-bg)',  fg:'var(--na-fg)',  br:'var(--na-br)',  lbl:'FALTA'},
   'INCAPACIDAD':  {bg:'var(--inc-bg)', fg:'var(--inc-fg)', br:'var(--inc-br)', lbl:'INCAPACIDAD'},
   'PSG':          {bg:'var(--psg-bg)', fg:'var(--psg-fg)', br:'var(--psg-br)', lbl:'PSG'},
@@ -1433,7 +1433,7 @@ function detectTurno() {
 function calcMetrics(team) {
   const t=team.length;
   const si=team.filter(m=>m.status==='SI').length;
-  const ret=team.filter(m=>m.status==='RET. <10'||m.status==='RET. >10').length;
+  const ret=team.filter(m=>m.status==='LLEGA TARDE <10'||m.status==='LLEGA TARDE >10').length;
   const no=team.filter(m=>m.status==='FALTA').length;
   const inc=team.filter(m=>m.status==='INCAPACIDAD').length;
   const psg=team.filter(m=>m.status==='PSG').length;
@@ -2480,7 +2480,7 @@ function renderMonthSummary() {
 ══════════════════════════════════════════ */
 const INC_TYPES = {
   falta:    { label:'Faltas',         color:'#dc2626', states:['FALTA'] },
-  retardo:  { label:'Retardos',       color:'#f59e0b', states:['RET. <10','RET. >10'] },
+  retardo:  { label:'Retardos',       color:'#f59e0b', states:['LLEGA TARDE <10','LLEGA TARDE >10'] },
   permiso:  { label:'Permisos',       color:'#3b82f6', states:['PCG','PSG'] },
   incap:    { label:'Incapacidades',  color:'#8b5cf6', states:['INCAPACIDAD'] },
   castigo:  { label:'Castigos',       color:'#991b1b', states:['CASTIGO'] },
